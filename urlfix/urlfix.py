@@ -51,11 +51,11 @@ class URLFix(object):
         if inplace:
             out_f = tempfile.NamedTemporaryFile(mode='r+', dir = os.getcwd(), delete=False)
             output_file = out_f.name
-        else:
-            out_f = open(output_file, "w")
 
         if not all(os.path.isfile(x) for x in [self.input_file, output_file]):
             raise FileNotFoundError("input_file and output_file should be valid files.")
+        else:
+            out_f = open(output_file, "w")
 
         number_moved = 0
         number_of_urls = 0
